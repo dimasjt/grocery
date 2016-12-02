@@ -10,7 +10,7 @@ export default class App extends React.Component {
         <div className="col-xs-8 col-xs-offset-2">
           <div className="row">
             <Navigation />
-            <Content />
+            <Content content={this.props.children} />
           </div>
         </div>
       </div>

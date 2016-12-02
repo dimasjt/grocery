@@ -6,7 +6,7 @@ export default class Content extends React.Component {
       <div className="col-xs-8">
         <div className="panel panel-default">
           <div className="panel-body">
-            Content
+            {this.props.content}
           </div>
         </div>
       </div>

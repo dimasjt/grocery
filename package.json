@@ -9,6 +9,7 @@
   "author": "Dimas J. Taniawan",
   "license": "MIT",
   "dependencies": {
+    "history": "^4.4.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",

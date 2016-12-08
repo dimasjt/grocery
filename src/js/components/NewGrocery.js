@@ -20,6 +20,7 @@ export default class NewGrocery extends React.Component {
 
     this.props.store.createGrocery(this.groceryName.value)
     this.groceryName.value = null
+    this.groceryName.focus()
   }
 
   render(){
@@ -38,7 +39,8 @@ export default class NewGrocery extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <div className="input-group">
-            <input type="text" name="name" ref={input => this.groceryName = input} placeholder="Grocery name..." className="form-control" />
+            <input type="text" name="name" ref={input => this.groceryName = input} placeholder="Grocery name..."
+              className="form-control" autoComplete="off" />
             <div className="input-group-btn">
               <input type="submit" value="Save" className="btn btn-default" />
             </div>

@@ -6,7 +6,7 @@ class Grocery{
   @observable completed
 
   constructor(name){
-    this.id = new Date()
+    this.id = (new Date()).getTime()
     this.name = name
     this.completed = false
   }

@@ -4,9 +4,12 @@ body{
 .container{
   margin-top: 50px;
 }
-.votes{
+.actions{
   float: right;
 }
-.votes > span{
+.actions > span{
   margin-right: 6px;
+}
+.actions .btn{
+  margin-right: 3px;
 }

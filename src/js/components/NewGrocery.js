@@ -36,7 +36,7 @@ export default class NewGrocery extends React.Component {
   }
 
   render(){
-    const { filteredGroceries, clearCompleted, completedGroceries } = this.props.store
+    const { filteredGroceries, clearCompleted, completedGroceries, deleteGrocery } = this.props.store
 
     const groceryList = filteredGroceries.map((grocery) => (
       <li key={grocery.id} className="checkbox">
@@ -44,23 +44,19 @@ export default class NewGrocery extends React.Component {
           <input type="checkbox" onChange={this.toggleChecked.bind(this, grocery)} checked={grocery.completed} />
           { grocery.name }
         </label>
-        <div className="votes">
+        <div className="actions">
           <span>
             Votes: { grocery.votes }
           </span>
-          <a className="btn btn-xs btn-primary" onClick={this.upvote.bind(this, grocery)}>
+          <a className="btn btn-xs btn-success" onClick={this.upvote.bind(this, grocery)}>
             <span className="glyphicon glyphicon-arrow-up"></span>
+          </a>
+          <a className="btn btn-xs btn-primary" onClick={deleteGrocery.bind(this, grocery)}>
+            <span className="glyphicon glyphicon-trash"></span>
           </a>
         </div>
       </li>
     ))
-
-    const filterInput = (
-      <div className="form-group">
-        <input type="text" onChange={this.filter.bind(this)} className="form-control" autoComplete="off"
-          placeholder="Filter groceries" />
-      </div>
-    )
 
     return (
       <div>
@@ -76,7 +72,10 @@ export default class NewGrocery extends React.Component {
           </div>
         </form>
 
-        {filterInput}
+        <div className="form-group">
+          <input type="text" onChange={this.filter.bind(this)} className="form-control" autoComplete="off"
+            placeholder="Filter groceries" />
+        </div>
 
         <div className="btn-group">
           <a onClick={clearCompleted}

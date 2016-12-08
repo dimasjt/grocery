@@ -55,6 +55,12 @@ class GroceryStore {
     const uncompletedGroceries = this.completedGroceries(true)
     this.groceries.replace(uncompletedGroceries)
   }
+
+  deleteGrocery = (grocery) => {
+    if(confirm('Are you sure?')){
+      this.groceries.remove(grocery)
+    }
+  }
 }
 
 var store = new GroceryStore

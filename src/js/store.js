@@ -22,10 +22,10 @@ class GroceryStore {
   @computed get filteredGroceries(){
     var matchesFilter = new RegExp(this.filter, "i")
     var groceries = this.groceries.filter((grocery) => {
-      !this.filter || matchesFilter.test(grocery.name)
+      return !this.filter || matchesFilter.test(grocery.name)
     })
 
-    groceries = this.groceries.sort((a, b) => {
+    groceries = groceries.sort((a, b) => {
       switch (this.order) {
         case 'top':
           return b.votes - a.votes

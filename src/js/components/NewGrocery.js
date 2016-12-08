@@ -24,11 +24,19 @@ export default class NewGrocery extends React.Component {
   }
 
   filter(event){
-    this.props.store.filter= event.target.value
+    this.props.store.filter = event.target.value
+  }
+
+  orderGroceries(orderType){
+    this.props.store.order = orderType
+  }
+
+  upvote(grocery){
+    grocery.votes++
   }
 
   render(){
-    const { filteredGroceries, clearCompleted } = this.props.store
+    const { filteredGroceries, clearCompleted, completedGroceries } = this.props.store
 
     const groceryList = filteredGroceries.map((grocery) => (
       <li key={grocery.id} className="checkbox">
@@ -36,6 +44,14 @@ export default class NewGrocery extends React.Component {
           <input type="checkbox" onChange={this.toggleChecked.bind(this, grocery)} checked={grocery.completed} />
           { grocery.name }
         </label>
+        <div className="votes">
+          <span>
+            Votes: { grocery.votes }
+          </span>
+          <a className="btn btn-xs btn-primary" onClick={this.upvote.bind(this, grocery)}>
+            <span className="glyphicon glyphicon-arrow-up"></span>
+          </a>
+        </div>
       </li>
     ))
 
@@ -63,7 +79,17 @@ export default class NewGrocery extends React.Component {
         {filterInput}
 
         <div className="btn-group">
-          <a onClick={clearCompleted} className="btn btn-danger btn-sm">Clear Completed</a>
+          <a onClick={clearCompleted}
+            className="btn btn-danger btn-sm"
+            disabled={!filteredGroceries.length || !completedGroceries(false).length}>
+            Clear Completed
+          </a>
+          <a onClick={this.orderGroceries.bind(this, 'top')} className="btn btn-default btn-sm">
+            Top Groceries
+          </a>
+          <a onClick={this.orderGroceries.bind(this, 'newest')} className="btn btn-default btn-sm">
+            Newest Groceries
+          </a>
         </div>
 
         <div>

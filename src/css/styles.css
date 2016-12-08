@@ -4,3 +4,9 @@ body{
 .container{
   margin-top: 50px;
 }
+.votes{
+  float: right;
+}
+.votes > span{
+  margin-right: 6px;
+}

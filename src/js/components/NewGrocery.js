@@ -28,7 +28,7 @@ export default class NewGrocery extends React.Component {
   }
 
   render(){
-    const { filteredGroceries } = this.props.store
+    const { filteredGroceries, clearCompleted } = this.props.store
 
     const groceryList = filteredGroceries.map((grocery) => (
       <li key={grocery.id} className="checkbox">
@@ -61,6 +61,10 @@ export default class NewGrocery extends React.Component {
         </form>
 
         {filterInput}
+
+        <div className="btn-group">
+          <a onClick={clearCompleted} className="btn btn-danger btn-sm">Clear Completed</a>
+        </div>
 
         <div>
           <ul className="list-unstyled">{groceryList}</ul>

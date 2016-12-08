@@ -23,6 +23,11 @@ class GroceryStore {
   createGrocery(name){
     this.groceries.push(new Grocery(name))
   }
+
+  clearCompleted = () => {
+    const incompleteGroceries = this.groceries.filter(grocery => !grocery.completed)
+    this.groceries.replace(incompleteGroceries)
+  }
 }
 
 var store = new GroceryStore

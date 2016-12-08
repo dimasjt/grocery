@@ -1,10 +1,26 @@
-import { applyMiddleware, createStore } form 'redux'
+import { observable } from 'mobx'
 
-import logger from 'redux-logger'
-import thunk from 'redux-thunk'
+class Grocery{
+  @observable id
+  @observable name
+  @observable completed
 
-import reducer form './reducers'
+  constructor(name){
+    this.id = new Date()
+    this.name = name
+    this.completed = false
+  }
+}
 
-cost middleware = applyMiddleware(thunk, logger())
+class GroceryStore {
+  @observable groceries = []
+  @observable filter = ''
 
-export default createStore(reducer, middleware)
+  createGrocery(name){
+    this.groceries.push(new Grocery(name))
+  }
+}
+
+var store = new GroceryStore
+
+export default store

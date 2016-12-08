@@ -1,4 +1,4 @@
-import { observable } from 'mobx'
+import { observable, computed } from 'mobx'
 
 class Grocery{
   @observable id
@@ -15,6 +15,10 @@ class Grocery{
 class GroceryStore {
   @observable groceries = []
   @observable filter = ''
+  @computed get filteredGroceries(){
+    var matchesFilter = new RegExp(this.filter, "i")
+    return this.groceries.filter(grocery => !this.filter || matchesFilter.test(grocery.name))
+  }
 
   createGrocery(name){
     this.groceries.push(new Grocery(name))

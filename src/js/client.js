@@ -9,6 +9,7 @@ import App from './components/App'
 
 import GroceryList from './components/GroceryList'
 import NewGrocery from './components/NewGrocery'
+import Temperature from './components/Temperature'
 
 const app = document.getElementById('app')
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route path="/" component={App}>
           <IndexRoute component={GroceryList} />
           <Route path="new" component={NewGrocery} />
+          <Route path="temperature" component={Temperature} />
         </Route>
       </Router>
     </Provider>

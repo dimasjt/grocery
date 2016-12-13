@@ -4,10 +4,13 @@
   "description": "ReactJS example",
   "scripts": {
     "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --content-base src --inline --hot",
-    "prod": ""
+    "start": "npm run dev"
   },
   "author": "Dimas J. Taniawan",
   "license": "MIT",
+  "engines": {
+    "node": "6.9.1"
+  },
   "dependencies": {
     "history": "^4.4.1",
     "mobx": "^2.6.5",

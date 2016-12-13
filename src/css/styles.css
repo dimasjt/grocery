@@ -13,3 +13,11 @@ body{
 .actions .btn{
   margin-right: 3px;
 }
+
+.weather-container input{
+  text-transform: uppercase;
+}
+
+.weather{
+  margin-top: 20px;
+}
